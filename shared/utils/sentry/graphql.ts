@@ -1,12 +1,8 @@
 import * as Sentry from '@sentry/react';
+import shouldRaise from './shouldRaise';
 
-function shouldRaiseGQLException<GQLException>(error: GQLException): boolean {
-  if (error) return true;
-  return false;
-}
-
-export function GQLCatcher<GQLException>(error: GQLException): void {
-  if (shouldRaiseGQLException(error)) {
+function GQLCatcher<GQLException>(error: GQLException): void {
+  if (shouldRaise(error)) {
     Sentry.captureException(error);
   }
 }

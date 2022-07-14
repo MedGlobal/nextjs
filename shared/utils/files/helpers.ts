@@ -11,4 +11,3 @@ export const formatBytes = (bytes: number, decimals: number = 2): string => {
   return parseFloat((bytes / (k ** i)).toFixed(dm)) + ' ' + sizes[i];
 };
 
-export default formatBytes;
