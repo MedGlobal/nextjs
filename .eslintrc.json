@@ -23,16 +23,17 @@
       },
       "alias": {
         "map": [
-          ["@/atoms/*", "./components/atoms/"],
+          ["@/atoms/*", "./ui/atoms/"],
+          ["@/components/*", "./components/"],
           ["@/config/*", "./config/"],
           ["@/constants/*", "./constants/"],
           ["@/contexts/*", "./contexts/"],
           ["@/hooks/*", "./shared/hooks/"],
-          ["@/interfaces/*", "./interfaces/"],
-          ["@/molecules/*", "./components/molecules/"],
-          ["@/organisms/*", "./components/organisms/"],
+          ["@/lib/*", "./lib/"],
+          ["@/molecules/*", "./ui/molecules/"],
+          ["@/organisms/*", "./ui/organisms/"],
           ["@/styles/*", "./styles/"],
-          ["@/templates/*", "./components/templates/"],
+          ["@/templates/*", "./ui/templates/"],
           ["@/utils/*", "./shared/utils/"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
