@@ -10,6 +10,7 @@ import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/constants/analytics'
 import theme from '@/config/theme';
 import createEmotionCache from '@/config/emotion';
 import GoogleAnalyticsScript from 'components/scripts/GoogleAnalytics';
+import '@/utils/typy/customTypes'
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
