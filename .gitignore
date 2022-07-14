@@ -25,6 +25,10 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# npm - NO NPM DAMMIT!
+# big boys use yarn
+package-lock.json
+
 # local env files
 .env*.local
 
