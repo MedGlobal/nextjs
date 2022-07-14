@@ -28,6 +28,7 @@
           ["@/config/*", "./config/"],
           ["@/constants/*", "./constants/"],
           ["@/contexts/*", "./contexts/"],
+          ["@/data/*", "./shared/data/"],
           ["@/hooks/*", "./shared/hooks/"],
           ["@/lib/*", "./lib/"],
           ["@/molecules/*", "./ui/molecules/"],
