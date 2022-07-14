@@ -1,3 +1,78 @@
 {
-  "extends": "next/core-web-vitals"
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "next/core-web-vitals",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "moduleDirectory": ["node_modules", "src/", "client/", "pages/"]
+      },
+      "alias": {
+        "map": [
+          ["@/atoms/*", "./components/atoms/"],
+          ["@/config/*", "./config/"],
+          ["@/constants/*", "./constants/"],
+          ["@/contexts/*", "./contexts/"],
+          ["@/hooks/*", "./shared/hooks/"],
+          ["@/interfaces/*", "./interfaces/"],
+          ["@/molecules/*", "./components/molecules/"],
+          ["@/organisms/*", "./components/organisms/"],
+          ["@/styles/*", "./styles/"],
+          ["@/templates/*", "./components/templates/"],
+          ["@/utils/*", "./shared/utils/"]
+        ],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "globals": {
+    "React": true,
+    // "google": true,
+    // "mount": true,
+    // "mountWithRouter": true,
+    // "shallow": true,
+    // "shallowWithRouter": true,
+    // "context": true,
+    // "expect": true,
+    // "jsdom": true,
+    "JSX": true
+  },
+  "plugins": ["@typescript-eslint", "react", "react-hooks", "@next/next"],
+  "rules": {
+    "quotes": ["error", "double"],
+    "semi": ["error", "never"],
+    "arrow-body-style": ["error", "always"],
+    "operator-linebreak": "off",
+    "consistent-return": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "object-curly-newline": "off",
+    "no-underscore-dangle": "off",
+    "import/no-extraneous-dependencies": "off"
+  }
 }
