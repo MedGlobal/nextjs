@@ -1,3 +1,4 @@
+// based on: https://davisgitonga.dev/blog/nextjs-google-analytics
 import * as React from 'react';
 import Script from 'next/script'
 import createEmotionCache from '@/config/emotion';
