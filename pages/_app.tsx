@@ -9,7 +9,8 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/constants/analytics'
 import theme from '@/config/theme';
 import createEmotionCache from '@/config/emotion';
-import GoogleAnalyticsScript from 'components/scripts/GoogleAnalytics';
+import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics';
+import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking';
 import '@/utils/typy/customTypes'
 
 // Client-side cache, shared for the whole session of the user in the browser.
@@ -26,7 +27,9 @@ const MyApp = (props: MyAppProps) => {
     pageProps
   } = props;
 
-  const GAnalytics = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
+  usePageTracking();
+
+  const GAnalyticsScripts = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
     <GoogleAnalyticsScript id={id} group={GA_TRACKING_GROUP}/>
   )), []);
 
@@ -36,7 +39,7 @@ const MyApp = (props: MyAppProps) => {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
-      {GAnalytics}
+      {GAnalyticsScripts}
 
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
