@@ -1,42 +1,45 @@
-import * as React from 'react';
-import { AppProps } from 'next/app';
+import * as React from 'react'
+import { AppProps } from 'next/app'
 import Head from 'next/head';
-import { appWithTranslation } from 'next-i18next';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import Head from 'next/head'
+import { appWithTranslation } from 'next-i18next'
+import { CacheProvider, EmotionCache } from '@emotion/react'
+import { ThemeProvider } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
 
 import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/constants/analytics'
-import theme from '@/config/theme';
+import theme from '@/config/theme'
 import createEmotionCache from '@/config/emotion';
-import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics';
-import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking';
+import createEmotionCache from '@/config/emotion'
+import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics'
+import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking'
 import '@/utils/typy/customTypes'
 
 // Client-side cache, shared for the whole session of the user in the browser.
-const clientSideEmotionCache = createEmotionCache();
+const clientSideEmotionCache = createEmotionCache()
 
-interface MyAppProps extends AppProps {
-  emotionCache?: EmotionCache;
+interface BoilerplateAppProps extends AppProps {
+  emotionCache?: EmotionCache
 }
 
-const MyApp = (props: MyAppProps) => {
+const BoilerplateApp = (props: BoilerplateAppProps) => {
   const {
     Component,
     emotionCache = clientSideEmotionCache,
     pageProps
-  } = props;
+  } = props
 
-  usePageTracking();
+  usePageTracking()
 
   const GAnalyticsScripts = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
-    <GoogleAnalyticsScript id={id} group={GA_TRACKING_GROUP}/>
-  )), []);
+    <GoogleAnalyticsScript key={id} id={id} group={GA_TRACKING_GROUP}/>
+  )), [])
 
   return (
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       {GAnalyticsScripts}
@@ -50,4 +53,4 @@ const MyApp = (props: MyAppProps) => {
   )
 }
 
-export default appWithTranslation(MyApp)
+export default appWithTranslation(BoilerplateApp)
