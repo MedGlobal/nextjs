@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
-import Head from 'next/head';
+import { ApolloProvider } from "@apollo/client"
 import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
@@ -9,7 +9,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 
 import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/data/constants/analytics'
 import theme from '@/config/theme'
-import createEmotionCache from '@/config/emotion';
+import client from "@/config/apollo"
 import createEmotionCache from '@/config/emotion'
 import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics'
 import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking'
@@ -47,7 +47,9 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Component {...pageProps} />
+        <ApolloProvider client={client}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </ThemeProvider>
     </CacheProvider>
   )
