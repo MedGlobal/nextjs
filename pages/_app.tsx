@@ -7,7 +7,7 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 
-import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/constants/analytics'
+import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/data/constants/analytics'
 import theme from '@/config/theme'
 import createEmotionCache from '@/config/emotion';
 import createEmotionCache from '@/config/emotion'

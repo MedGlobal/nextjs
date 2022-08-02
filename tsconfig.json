@@ -19,7 +19,6 @@
       "@/atoms/*": ["ui/atoms/*"],
       "@/components/*": ["components/*"],
       "@/config/*": ["config/*"],
-      "@/constants/*": ["constants/*"],
       "@/contexts/*": ["contexts/*"],
       "@/data/*": ["shared/data/*"],
       "@/hooks/*": ["shared/hooks/*"],

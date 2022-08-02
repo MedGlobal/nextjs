@@ -1,4 +1,4 @@
-import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from "@/constants/analytics";
+import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from "@/data/constants/analytics";
 import { exists } from './helpers';
 
 // TODO: Check recommended props here: https://support.google.com/analytics/answer/9267735?visit_id=637892006529986923-2352346741&rd=1
