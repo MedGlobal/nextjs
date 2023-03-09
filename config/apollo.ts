@@ -33,7 +33,7 @@ const errorSentryLink = new SentryLink({
   },
 })
 
-let apolloClient: ApolloClient<any> | null = null
+let apolloClient: ApolloClient<unknown> | null = null
 let oldState: CacheState | void = undefined // eslint-disable-line no-undef-init
 let prevLang: string | null = null
 let prevBatch: boolean | null = null
