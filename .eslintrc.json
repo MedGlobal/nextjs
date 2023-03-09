@@ -5,6 +5,8 @@
     "jest": true
   },
   "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
     "airbnb-base",
     "next/core-web-vitals",
     "plugin:import/recommended",
@@ -16,10 +18,16 @@
     "sourceType": "module"
   },
   "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true
+      },
       "node": {
         "extensions": [".js", ".jsx", ".ts", ".tsx"],
-        "moduleDirectory": ["node_modules", "src/", "client/", "pages/"]
+        "moduleDirectory": ["node_modules", "pages", "components", "lib"]
       },
       "alias": {
         "map": [
@@ -55,12 +63,9 @@
     // "jsdom": true,
     "JSX": true
   },
-  "plugins": ["@typescript-eslint", "react", "react-hooks", "@next/next"],
+  "plugins": ["import", "@typescript-eslint", "react", "react-hooks", "@next/next"],
   "rules": {
-    "quotes": ["error", "double"],
-    "semi": ["error", "never"],
-    "arrow-body-style": ["error", "always"],
-    "operator-linebreak": "off",
+    "@typescript-eslint/ban-ts-comment": "off",
     "consistent-return": "off",
     "import/extensions": [
       "error",
@@ -72,8 +77,20 @@
         "tsx": "never"
       }
     ],
-    "object-curly-newline": "off",
+    "import/default": "off",
+    "import/namespace": "off",
+    "import/no-cycle": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-unresolved": "error",
+    "import/prefer-default-export": "off",
     "no-underscore-dangle": "off",
-    "import/no-extraneous-dependencies": "off"
+    "no-undef": "off", // Typescript will not compile still
+    "no-unused-vars": "off", // Typescript will not compile still
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "quotes": ["error", "single"],
+    "semi": ["error", "never"]
   }
 }
