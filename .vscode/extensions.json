@@ -1,6 +1,14 @@
 {
   "recommendations": [
     "lokalise.i18n-ally",
-    "Gruntfuggly.todo-tree"
+    "gruntfuggly.todo-tree",
+    "dbaeumer.vscode-eslint",
+    "peterschmalfeldt.explorer-exclude",
+    "wix.glean",
+    "wix.vscode-import-cost",
+    "vscodeshift.mui-snippets",
+    "stylelint.vscode-stylelint",
+    "jgclark.vscode-todo-highlight",
+    "chakrounanas.turbo-console-log"
   ]
 }
