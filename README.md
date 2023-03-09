@@ -30,13 +30,17 @@ Some things have been prepared to work better with a Django + Graphene backend, 
 
 `components`
 `components/scripts`
+`components/tools`
 `config`
-`constants`
 `contexts`
+`graphql`
 `lib`
+`lib/generic`
 `lib/schemas`
 `pages`
+`pages/api`
 `public`
+`public/locale`
 
 `shared`
 `shared/data`
@@ -50,6 +54,7 @@ Some things have been prepared to work better with a Django + Graphene backend, 
 `ui/molecules`
 `ui/organisms`
 `ui/templates`
+`ui/units`
 
 ## A word from the author
 
