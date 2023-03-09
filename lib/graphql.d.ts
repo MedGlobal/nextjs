@@ -3,7 +3,7 @@ interface GQLObject {
 }
 
 interface GraphQLSQL extends GQLObject {
-  __typename: "DjangoDebugSQL",
+  __typename: 'DjangoDebugSQL',
   sql: string,
   transId: string | null,
   transStatus: string | null,
@@ -12,12 +12,12 @@ interface GraphQLSQL extends GQLObject {
 }
 
 interface GraphQLDebug extends GQLObject {
-  __typename: "DjangoDebug",
+  __typename: 'DjangoDebug',
   sql: GraphQLSQL,
 }
 
 interface GraphQLPageInfo extends GQLObject {
-  __typename: "PaginationDataType",
+  __typename: 'PaginationDataType',
   page: number,
   pageSize: number,
   totalPages: number,
@@ -26,8 +26,9 @@ interface GraphQLPageInfo extends GQLObject {
   hasPrev: boolean,
 }
 
-interface GraphQLDataList<Type> extends GQLObject {
-  // __typename: string,
-  pageInfo: GraphQLPageInfo,
-  objects: Type[],
+interface GraphQLDataList<T> extends GQLObject {
+  [operation: string]: {
+    pageInfo: GraphQLPageInfo,
+    objects: T[],
+  }
 }

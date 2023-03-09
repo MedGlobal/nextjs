@@ -1,15 +1,15 @@
 declare type StripeCardBrands =
-  | "VISA"
-  | "AMEX"
-  | "DINERS"
-  | "DISCOVER"
-  | "JCB"
-  | "MAESTRO"
-  | "MASTERCARD"
-  | "UNIONPAY"
-  | "VISA"
-  | "UNKNOWN"
-
+  | 'VISA'
+  | 'AMEX'
+  | 'AMERICAN_EXPRESS'
+  | 'DINERS'
+  | 'DISCOVER'
+  | 'JCB'
+  | 'MAESTRO'
+  | 'MASTERCARD'
+  | 'UNIONPAY'
+  | 'VISA'
+  | 'UNKNOWN'
 
 interface StripeCardInformation {
   id: string,
