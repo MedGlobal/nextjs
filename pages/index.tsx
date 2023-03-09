@@ -1,19 +1,21 @@
-import * as React from 'react';
-import type { NextPage } from 'next';
+import * as React from 'react'
+import { ApolloQueryResult } from '@apollo/client'
+import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 
-import client from "@/config/apollo";
-import { COUNTRIES } from "@/data/queries/countries"
+import getClient from '@/config/apollo'
+import { LIST_STORES } from '@/data/queries/stores'
 
-const Home: NextPage = () => {
-  const { t } = useTranslation(['common']);
+const Home: NextPage = ({ stores }) => {
+  console.log("🚀 ~ file: index.tsx:17 ~stores:", stores)
+  const { t } = useTranslation(['common'])
   return (
     <Container maxWidth='lg'>
       <Head>
@@ -49,21 +51,33 @@ const Home: NextPage = () => {
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </Box>
     </Container>
-  );
-};
+  )
+}
 
-export async function getServerSideProps({ locale }: { locale: string}) {
-  const { data } = await client.query({
-    query: COUNTRIES,
-  });
+type CountriesListModel = {
+  countries: {
+    code: string,
+    name: string,
+    emoji: string,
+  }[],
+}
+
+export async function getServerSideProps({ locale }: { locale: string }) {
+  const apolloClient = getClient({ language: locale as LanguageCode })
+  const countriesQuery: Promise<ApolloQueryResult<GraphQLDataList<CountriesListModel>>> =
+    apolloClient.query({
+      query: LIST_STORES,
+    })
+  const results = await Promise.all([countriesQuery])
 
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       // Will be passed to the page component as props
-      countries: data.countries.slice(0, 4),
+      initialApolloState: apolloClient.cache.extract(),
+      stores: results[0].data.listStores.objects.slice(0, 4),
     },
-  };
+  }
 }
 
-export default Home;
+export default Home

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
-import { ApolloProvider } from "@apollo/client"
+import { ApolloProvider } from '@apollo/client'
 import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
@@ -9,9 +9,9 @@ import CssBaseline from '@mui/material/CssBaseline'
 
 import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/data/constants/analytics'
 import theme from '@/config/theme'
-import client from "@/config/apollo"
 import createEmotionCache from '@/config/emotion'
 import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics'
+import useApollo from '@/hooks/Apollo/useApollo'
 import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking'
 import '@/utils/typy/customTypes'
 
@@ -26,10 +26,11 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
   const {
     Component,
     emotionCache = clientSideEmotionCache,
-    pageProps
+    pageProps,
   } = props
 
   usePageTracking()
+  const apolloClient = useApollo(pageProps?.initialApolloState)
 
   const GAnalyticsScripts = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
     <GoogleAnalyticsScript key={id} id={id} group={GA_TRACKING_GROUP}/>
@@ -47,7 +48,7 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <ApolloProvider client={client}>
+        <ApolloProvider client={apolloClient}>
           <Component {...pageProps} />
         </ApolloProvider>
       </ThemeProvider>
