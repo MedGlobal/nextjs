@@ -36,12 +36,14 @@
           ["@/config/*", "./config/"],
           ["@/contexts/*", "./contexts/"],
           ["@/data/*", "./shared/data/"],
+          ["@/graphql/*", "./graphql/"],
           ["@/hooks/*", "./shared/hooks/"],
           ["@/lib/*", "./lib/"],
           ["@/molecules/*", "./ui/molecules/"],
           ["@/organisms/*", "./ui/organisms/"],
           ["@/styles/*", "./styles/"],
           ["@/templates/*", "./ui/templates/"],
+          ["@/units/*", "./ui/units/"],
           ["@/utils/*", "./shared/utils/"]
         ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
