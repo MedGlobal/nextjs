@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
 
 import getClient from '@/config/apollo'
-import { LIST_STORES } from '@/data/queries/stores'
+import { LIST_STORES } from '@/graphql/queries/stores'
 
 const Home: NextPage = ({ stores }) => {
   console.log("🚀 ~ file: index.tsx:17 ~stores:", stores)
