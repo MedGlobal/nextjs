@@ -7,10 +7,12 @@ import { CacheProvider, EmotionCache } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
 
-import { GA_TRACKING_IDS, GA_TRACKING_GROUP } from '@/data/constants/analytics'
+import { GA_TRACKING_IDS, GA_TRACKING_GROUP, LO_ID, FBP_ID } from '@/data/constants/analytics'
 import theme from '@/config/theme'
 import createEmotionCache from '@/config/emotion'
 import GoogleAnalyticsScript from '@/components/scripts/GoogleAnalytics'
+import LuckyOrangeScript from '@/components/scripts/LuckyOrange'
+import FacebookPixelScript from '@/components/scripts/FacebookPixel'
 import useApollo from '@/hooks/Apollo/useApollo'
 import usePageTracking from '@/hooks/GoogleAnalytics/usePageTracking'
 import '@/utils/typy/customTypes'
@@ -35,6 +37,12 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
   const GAnalyticsScripts = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
     <GoogleAnalyticsScript key={id} id={id} group={GA_TRACKING_GROUP}/>
   )), [])
+  const LuckyOScript = React.useMemo(() => (
+    LO_ID ? <LuckyOrangeScript key={LO_ID} id={LO_ID} /> : null
+  ), [])
+  const FBPixelScript = React.useMemo(() => (
+    FBP_ID ? <FacebookPixelScript key={FBP_ID} id={FBP_ID} /> : null
+  ), [])
 
   return (
     <CacheProvider value={emotionCache}>
@@ -44,6 +52,8 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
       </Head>
 
       {GAnalyticsScripts}
+      {LuckyOScript}
+      {FBPixelScript}
 
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
