@@ -6,6 +6,7 @@ import { appWithTranslation } from 'next-i18next'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { ThemeProvider } from '@mui/material/styles'
 import CssBaseline from '@mui/material/CssBaseline'
+import { SnackbarProvider, SnackbarKey } from 'notistack'
 
 import { GA_TRACKING_IDS, GA_TRACKING_GROUP, LO_ID, FBP_ID } from '@/data/constants/analytics'
 import theme from '@/config/theme'
@@ -32,6 +33,10 @@ const BoilerplateApp = (props: BoilerplateAppProps) => {
   } = props
 
   usePageTracking()
+  const notistackRef = React.createRef<SnackbarProvider>()
+  const onClickDismiss = (key: SnackbarKey) => () => {
+    if (notistackRef.current) notistackRef.current.closeSnackbar(key)
+  }
   const apolloClient = useApollo(pageProps?.initialApolloState)
 
   const GAnalyticsScripts = React.useMemo(() => GA_TRACKING_IDS.map((id) => (
