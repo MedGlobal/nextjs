@@ -7,12 +7,9 @@ interface LuckyOrangeScriptProps {
   id: string;
 }
 
-const LuckyOrangeScript = (props: LuckyOrangeScriptProps) => {
-  const {
-    id,
-  } = props
-
-  return (
+const LuckyOrangeScript = ({
+  id,
+}: LuckyOrangeScriptProps) => (
     <>
       <Script
         strategy="lazyOnload"
@@ -28,7 +25,6 @@ const LuckyOrangeScript = (props: LuckyOrangeScriptProps) => {
         }}
       />
     </>
-  )
-}
+)
 
 export default LuckyOrangeScript

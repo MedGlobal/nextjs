@@ -20,13 +20,14 @@ type HeadTemplateProps = {
     '@type': string,
     [key: string]: unknown,
   },
+  children?: React.ReactNode,
 }
 
-const HeadTemplate = ({
+const HeadTemplate:React.FC<HeadTemplateProps> = ({
   router,
-  title = 'LeTops',
-  titleSuffix = '| LeTops',
-  description = 'I am a full-stack developer',
+  title = 'INSIGHTS',
+  titleSuffix = '| INSIGHTS',
+  description = 'Welcome to MedGlobal\'s INSIGHTS Buyer\'s Guide',
   image = `${SSL_ON ? 'https' : 'http'}://${DOMAIN}/opengraph.jpg`,
   url = `${SSL_ON ? 'https' : 'http'}://${DOMAIN}${router.asPath}`,
   type = 'website',
@@ -47,8 +48,9 @@ const HeadTemplate = ({
     'zh_CN',
   ],
   schema = undefined,
+  children,
   // keywords = [],
-}: HeadTemplateProps): JSX.Element => {
+}) => {
   const { locale = 'en' } = router
   const metaLocales = locales
     .filter((l) => l !== locale)
@@ -60,7 +62,7 @@ const HeadTemplate = ({
         href={`${SSL_ON ? 'https' : 'http'}://${DOMAIN}/${l}${router.asPath}`}
       />))
   const ogCurrent = localesRegions
-    .find((l) => l.startsWith(locale)) || 'en_US'
+    .find((l) => l.startsWith(locale)) ?? 'en_US'
   const ogLocales = localesRegions
     .filter((l) => !l.startsWith(locale))
     .map((l) => (
@@ -87,6 +89,8 @@ const HeadTemplate = ({
         ? (<script type="application/ld+json">{JSON.stringify(schema)}</script>)
         : null
       }
+
+      {children}
     </Head>
   )
 }

@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react"
+import React from 'react'
+import useClientOnly from '@/hooks/Next/useClientOnly'
 
 interface ClientOnlyProps {
   children: React.ReactNode
@@ -6,13 +7,12 @@ interface ClientOnlyProps {
 
 // NOTE: Wrap elements with apollo hooks to this one. The hooks are for things that don't need to be
 // crawled by the SEO systems
-export default function ClientOnly({ children }: ClientOnlyProps): JSX.Element {
-  const [hasMounted, setHasMounted] = useState(false)
-  useEffect(() => {
-    setHasMounted(true)
-  }, [])
+const ClientOnly: React.FC<ClientOnlyProps> = ({ children }) => {
+  const hasMounted = useClientOnly()
 
   if (!hasMounted) return (<>{null}</>)
 
   return (<>{children}</>)
 }
+
+export default ClientOnly

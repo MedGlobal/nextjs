@@ -38,9 +38,11 @@
           ["@/data/*", "./shared/data/"],
           ["@/graphql/*", "./graphql/"],
           ["@/hooks/*", "./shared/hooks/"],
+          ["@/i18n", "./next-i18next.config.js"],
           ["@/lib/*", "./lib/"],
           ["@/molecules/*", "./ui/molecules/"],
           ["@/organisms/*", "./ui/organisms/"],
+          ["@/public/*", "./public/"],
           ["@/styles/*", "./styles/"],
           ["@/templates/*", "./ui/templates/"],
           ["@/units/*", "./ui/units/"],
@@ -90,6 +92,7 @@
     "no-underscore-dangle": "off",
     "no-undef": "off", // Typescript will not compile still
     "no-unused-vars": "off", // Typescript will not compile still
+    "no-nested-ternary": "off",
     "object-curly-newline": "off",
     "operator-linebreak": "off",
     "quotes": ["error", "single"],

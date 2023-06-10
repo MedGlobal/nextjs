@@ -7,12 +7,9 @@ interface FacebookPixelScriptProps {
   id: string,
 }
 
-const FacebookPixelScript = (props: FacebookPixelScriptProps) => {
-  const {
-    id,
-  } = props
-
-  return (
+const FacebookPixelScript = ({
+  id,
+}: FacebookPixelScriptProps) => (
     <>
       <Script
         id="fb-pixel-init"
@@ -33,7 +30,6 @@ const FacebookPixelScript = (props: FacebookPixelScriptProps) => {
         }}
       />
     </>
-  )
-}
+)
 
 export default FacebookPixelScript
