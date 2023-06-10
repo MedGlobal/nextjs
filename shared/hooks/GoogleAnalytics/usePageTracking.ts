@@ -1,7 +1,7 @@
 // from: https://davisgitonga.dev/blog/nextjs-google-analytics
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import Script from 'next/script'
+// import Script from 'next/script'
 import pageview from '@/utils/gtag/pageview'
 
 const usePageTracking = () => {
@@ -17,4 +17,4 @@ const usePageTracking = () => {
   }, [router.events])
 }
 
-export default usePageTracking;
+export default usePageTracking
